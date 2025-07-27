@@ -1,0 +1,30 @@
+.container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.heading {
+  color: brown;
+  font-size: 30px;
+}
+
+.label {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.value {
+  font-size: 18px;
+}
+
+.blue {
+  color: blue;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
