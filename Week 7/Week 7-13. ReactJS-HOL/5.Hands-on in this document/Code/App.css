@@ -1,0 +1,20 @@
+.mystyle1, .st2, .v1 {
+  width: 25%;
+  padding: 10px;
+}
+
+.mystyle1 {
+  border-right: 4px solid green;
+}
+
+.st2 {
+  border-right: 4px solid green;
+}
+
+h1 {
+  color: black;
+}
+
+h2 {
+  font-weight: bold;
+}
