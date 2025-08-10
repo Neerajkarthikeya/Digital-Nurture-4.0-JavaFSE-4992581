@@ -1,0 +1,39 @@
+1. Verify master is in a clean state
+git checkout master
+git status
+
+Expected output:
+On branch master
+nothing to commit, working tree clean
+
+If it’s not clean, commit or stash changes before continuing.
+
+2. List all available branches
+git branch -a
+
+The branch with * is the current branch.
+remotes/origin/... shows remote branches.
+
+3. Pull the remote repository into master
+git pull origin master
+
+This ensures your local master is up to date with the remote.
+If there are changes on the remote, they will be merged into your local master.
+
+4. Push pending changes from Git-T03-HOL_002 to remote
+git add .
+git commit -m "Complete Git-T03-HOL_002 changes"
+git push origin master
+
+git add . stages all pending changes.
+git commit saves them to your local repo.
+git push sends them to the remote repository.
+
+5. Verify changes in the remote repository
+Open your GitHub repository in a browser.
+Check the latest commit message to confirm your changes are reflected.
+
+You can also run:
+git log --oneline --decorate --graph --all
+
+to confirm that your local and remote branches are aligned.

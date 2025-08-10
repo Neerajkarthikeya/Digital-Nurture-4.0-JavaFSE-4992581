@@ -1,0 +1,52 @@
+Step 1: Configure Git to Use P4Merge
+Before starting branching/merging, configure Git to use P4Merge as the merge tool:
+git config --global merge.tool p4merge
+git config --global mergetool.p4merge.path "C:/Program Files/Perforce/p4merge.exe"
+git config --global mergetool.keepBackup false
+(Adjust the path if P4Merge is installed elsewhere.)
+
+Branching Steps
+Create a new branch
+git branch GitNewBranch
+
+List all branches (local & remote)
+git branch -a
+The branch with a * is your current branch.
+
+Switch to the new branch
+git checkout GitNewBranch
+
+Add new files with content
+echo "This is a file in GitNewBranch" > branchfile.txt
+
+Stage the file
+git add branchfile.txt
+
+Commit the file
+git commit -m "Add branchfile.txt in GitNewBranch"
+
+Check the status
+git status
+
+Merging Steps
+Switch back to master
+git checkout master
+
+View differences between master and branch (command-line)
+git diff master GitNewBranch
+
+View differences with P4Merge
+git mergetool
+(P4Merge will open to show visual differences.)
+
+Merge branch into master
+git merge GitNewBranch
+
+View merge history
+git log --oneline --graph --decorate
+
+Delete the merged branch
+git branch -d GitNewBranch
+
+Check status
+git status

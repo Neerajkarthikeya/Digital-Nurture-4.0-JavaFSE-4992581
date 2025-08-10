@@ -1,0 +1,44 @@
+Step 1: Git Configuration
+Check Git installation
+git --version
+
+If you see version info, Git is installed.
+
+Configure your name and email
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+
+Verify configuration
+git config --list
+
+Step 2: (Optional) Set Your Editor
+If you want to use VS Code as Git editor:
+git config --global core.editor "code --wait"
+
+If you want to use plain Notepad:
+git config --global core.editor "notepad"
+(If you don’t set this, Git will use its default editor.)
+
+Step 3: Create Local Repository and Add File
+Create folder & initialize Git:
+mkdir GitDemo
+cd GitDemo
+git init
+
+Create file and add content:
+echo "Welcome to Git!" > welcome.txt
+Stage file:
+git add welcome.txt
+Commit file:
+git commit -m "First commit with welcome.txt"
+
+Step 4: Push to GitLab
+Create a repository named GitDemo on GitLab.
+Link your local repo to GitLab:
+git remote add origin https://gitlab.com/yourusername/GitDemo.git
+
+Pull (in case of remote changes):
+git pull origin master
+
+Push your code:
+git push origin master

@@ -1,0 +1,88 @@
+Step-by-Step Instructions
+Step 1: Verify master is in a clean state
+git checkout master
+git status
+
+It should say:
+nothing to commit, working tree clean
+
+Step 2: Create branch GitWork and add hello.xml
+git branch GitWork
+git checkout GitWork
+echo "<message>Hello from GitWork</message>" > hello.xml
+git status
+
+Step 3: Update content of hello.xml
+echo "<message>Hello again from GitWork</message>" > hello.xml
+git status
+
+You’ll see it as “modified” in status.
+
+Step 4: Commit changes in GitWork
+git add hello.xml
+git commit -m "Update hello.xml in GitWork branch"
+
+Step 5: Switch to master
+git checkout master
+
+Step 6: Add hello.xml to master with different content
+echo "<message>Hello from Master</message>" > hello.xml
+git add hello.xml
+
+Step 7: Commit changes in master
+git commit -m "Add hello.xml with master content"
+
+Step 8: View full log
+git log --oneline --graph --decorate --all
+
+Step 9: See differences in CLI
+git diff master GitWork
+
+Step 10: See differences in P4Merge
+Configure P4Merge (if not already done):
+git config --global merge.tool p4merge
+git config --global mergetool.p4merge.path "C:/Program Files/Perforce/p4merge.exe"
+
+Run:
+git mergetool
+
+Step 11: Merge GitWork into master
+git merge GitWork
+
+Since both branches modified the same file, this will cause a merge conflict.
+
+Step 12: Observe Git conflict markers
+Open hello.xml — you’ll see:
+php-template
+Copy code
+<<<<<<< HEAD
+<message>Hello from Master</message>
+=======
+<message>Hello again from GitWork</message>
+>>>>>>> GitWork
+
+Step 13: Use 3-way merge tool to resolve conflict
+git mergetool
+
+Choose correct final content, save, and close.
+
+Step 14: Commit the merge resolution
+git add hello.xml
+git commit -m "Merge GitWork into master and resolve conflict"
+
+Step 15: Add backup files to .gitignore
+If P4Merge created backup files (e.g., .orig), add to .gitignore:
+echo "*.orig" >> .gitignore
+git add .gitignore
+
+Step 16: Commit .gitignore changes
+git commit -m "Ignore merge backup files"
+
+Step 17: List all branches
+git branch -a
+
+Step 18: Delete merged branch
+git branch -d GitWork
+
+Step 19: View final log
+git log --oneline --graph --decorate

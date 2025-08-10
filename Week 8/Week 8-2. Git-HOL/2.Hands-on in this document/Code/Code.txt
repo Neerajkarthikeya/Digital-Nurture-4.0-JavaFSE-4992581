@@ -1,0 +1,85 @@
+Step 1: Configure Git
+Open Git Bash.
+Check if Git is installed:
+git --version
+
+Set your name and email:
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+
+Verify:
+git config --list
+
+Step 2: Create a Local Repository
+Create a folder for your project:
+mkdir GitDemo
+cd GitDemo
+
+Initialize Git:
+git init
+
+Verify:
+ls -a
+
+Step 3: Add a File and Commit
+Create a file:
+echo "Welcome to Git!" > welcome.txt
+
+Stage the file:
+git add welcome.txt
+
+Commit the file:
+git commit -m "First commit with welcome.txt"
+
+Step 4: Link to Remote GitLab Repository
+Create a new repo in GitLab named GitDemo.
+
+Link your local repo:
+git remote add origin https://gitlab.com/yourusername/GitDemo.git
+
+Pull from remote (if needed):
+git pull origin master
+
+Push to remote:
+git push origin master
+
+Step 5: Create .log File, log Folder & Ignore Them
+Create .log file and folder:
+mkdir log
+echo "This is a log file" > sample.log
+echo "Log folder file" > log/error.log
+
+Create .gitignore:
+touch .gitignore
+
+Edit .gitignore (open in VS Code, Notepad, or any editor) and add:
+*.log
+log/
+
+Save the file.
+
+Step 6: Verify .gitignore
+Check status:
+git status
+
+.gitignore should be shown as untracked.
+.log files and log folder should not appear.
+
+Step 7: Commit .gitignore
+Stage:
+git add .gitignore
+
+Commit:
+git commit -m "Ignore .log files and log folder"
+
+Push:
+git push origin master
+
+Step 8: Final Verification
+Run:
+git status
+
+It should say:
+nothing to commit, working tree clean
+
+and .log files / log folder won’t be tracked.
